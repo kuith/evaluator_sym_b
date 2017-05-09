@@ -1,0 +1,42 @@
+login:
+    path: /login
+    defaults: {_controller: EvaluatorBundle:User:login}
+    
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+evaluator_homepage:
+    path: /
+    defaults: { _controller: EvaluatorBundle:Default:index }
+    
+evaluator_index_courses:
+    path: /courses
+    defaults: { _controller: EvaluatorBundle:Course:index }
+    
+evaluator_add_course:
+    path: /courses/add
+    defaults: { _controller: EvaluatorBundle:Course:add }
+
+evaluator_delete_course:
+    path: /courses/delete/{id}
+    defaults: { _controller: EvaluatorBundle:Course:delete }
+
+evaluator_enter_course:
+    path: /courses/enter/{id}
+    defaults: {_controller: EvaluatorBundle:Course:enter }
+
+evaluator_add_partial:
+    path: /partials/add/{id}
+    defaults: { _controller: EvaluatorBundle:Partial:add }
+    
+evaluator_delete_partial:
+    path: /partials/delete/{idPartial}{idCourse}
+    defaults: { _controller: EvaluatorBundle:Partial:delete }
+    
+evaluator_ajax_updateMark:
+    path: /updateMark
+    defaults: { _controller: EvaluatorBundle:Ajax:updateMark }
+    methods: 'GET'
