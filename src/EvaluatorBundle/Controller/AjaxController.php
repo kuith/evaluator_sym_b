@@ -24,12 +24,16 @@ class AjaxController extends Controller{
 			$mark -> setGrade($grade);
 		    $em->flush();
 		}
+		$em->getRepository("EvaluatorBundle:Mark")->updateMarkPercentage($idMark);
 		
 		die();
 	}
 	
 
-	public function updateFinalAction(){
+	public function updatePercentageFinal(){
 		
 	}
 }
+
+
+//TODO filtrar para que no pase de 10 la nota, no se donde se hará

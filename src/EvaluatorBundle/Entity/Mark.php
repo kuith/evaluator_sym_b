@@ -16,9 +16,39 @@ class Mark
      * @var float
      */
     private $grade;
+	
+	/**
+     * @var float
+     */
+    private $gradeForFinal;
+	
+	/**
+     * Get gradeForFinal
+     *
+     * @return float
+     */
+ 
+    public function getGradeForFinal()
+    {
+        return $this->gradeForFinal;
+    }
 
     /**
-     * @var \EvaluatorBundle\Entity\Courses
+     * Set gradeForFinal
+     *
+     * @param float $gradeForFinal
+     *
+     * @return Mark
+     */
+    public function setGradeForFinal($gradeForFinal)
+    {
+        $this->gradeForFinal = $gradeForFinal;
+
+        return $this;
+    }
+	
+    /**
+     * @var \EvaluatorBundle\Entity\Course
      */
     private $idCourse;
 
@@ -31,7 +61,6 @@ class Mark
      * @var \EvaluatorBundle\Entity\Student
      */
     private $idStudent;
-
 
     /**
      * Get id
@@ -139,4 +168,3 @@ class Mark
         return $this->idStudent;
     }
 }
-

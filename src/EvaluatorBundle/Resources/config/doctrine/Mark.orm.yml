@@ -27,6 +27,11 @@ EvaluatorBundle\Entity\Mark:
             nullable: true
             precision: 10
             scale: 0
+        gradeForFinal:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
     manyToOne:
         idCourse:
             targetEntity: Course

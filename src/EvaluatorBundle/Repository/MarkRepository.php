@@ -59,5 +59,18 @@ class MarkRepository extends EntityRepository{
 		$em->flush();
 	}
 	
+		public function updateMarkPercentage($idMark){
+		$em = $this->getEntityManager();
+		$mark = $this->find($idMark);
+		
+		$grade = $mark->getGrade();
+		$weight = $mark->getIdPartial()->getWeight();
+		
+		$markPercentage = ($grade * $weight)/100;
+		$mark->setGradeForFinal($markPercentage);
+		$em->flush();
+		
+	}
+	
 }
 

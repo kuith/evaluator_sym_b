@@ -87,5 +87,9 @@ class PartialRepository extends EntityRepository{
 		$em->remove($partial);
 		$em->flush();
 	}
+	
+	public function getMarkPercentage(){
+		
+	}
 }
 

@@ -10,6 +10,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="grade" type="float" column="grade" precision="10" scale="0" nullable="true"/>
+    <field name="gradeForFinal" type="float" column="gradeForFinal" precision="10" scale="0" nullable="true"/>
     <many-to-one field="idStudent" target-entity="Students" fetch="LAZY">
       <join-columns>
         <join-column name="id_student" referenced-column-name="id"/>
