@@ -62,6 +62,12 @@ class Mark
      */
     private $idStudent;
 
+	
+	public function __construct() {
+		$this->grade = 0;
+		$this->gradeForFinal = 0;
+	}
+	
     /**
      * Get id
      *
@@ -81,7 +87,8 @@ class Mark
      */
     public function setGrade($grade)
     {
-        $this->grade = $grade;
+        $this->grade = $grade;		
+		$this->gradeForFinal = $this->grade * $this->getIdPartial()->getWeight() / 100;
 
         return $this;
     }

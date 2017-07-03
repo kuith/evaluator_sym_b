@@ -59,18 +59,22 @@ class MarkRepository extends EntityRepository{
 		$em->flush();
 	}
 	
-		public function updateMarkPercentage($idMark){
-		$em = $this->getEntityManager();
-		$mark = $this->find($idMark);
-		
-		$grade = $mark->getGrade();
-		$weight = $mark->getIdPartial()->getWeight();
-		
-		$markPercentage = ($grade * $weight)/100;
-		$mark->setGradeForFinal($markPercentage);
-		$em->flush();
-		
+	public function findMarksByStudentCourse($idStudent, $idCourse){
+		return $this->getEntityManager()
+			->createQuery("SELECT m FROM EvaluatorBundle:Mark m 
+				WHERE midStudent =: idStudent AND m.idCourse =: idCourse")
+			->setParameters(array('idStudent' => $idStudent, 'idCourse' => $idCourse))
+			->getResult();
 	}
 	
+	public function findFinalMark ($mark){
+		$finalMark = 0;
+		foreach ($mark as $partialMark){
+			$finalMark += $partialMark->getGradeForFinal();
+		}
+		return $finalMark;
+	}
+
+
 }
 

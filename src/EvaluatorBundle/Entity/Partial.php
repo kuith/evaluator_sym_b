@@ -24,7 +24,9 @@ class Partial
 	
 	 private $name;
 
-
+	 public function __construct() {
+		 $this->weight = 0;
+	 }
     /**
      * Get id
      *

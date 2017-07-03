@@ -4,6 +4,9 @@ namespace EvaluatorBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use EvaluatorBundle\Entity\Partial;
 
+use EvaluatorBundle\Entity\Student;
+use EvaluatorBundle\Entity\Mark;
+
 class PartialRepository extends EntityRepository{
 	
 	public function findPartialsNoFinal($idCourse){
@@ -42,10 +45,21 @@ class PartialRepository extends EntityRepository{
 		$partial = new Partial();
 		$partial->setName($name);
 		$partial->setIdCourse($idCourse);
-		$partial->setWeight($weight);
-		
+		$partial->setWeight($weight);	
+
 		$em->persist($partial);
 		$em->flush();
+		
+		$course = $partial->getIdCourse();
+		$students = $em->getRepository(Student::class)->findByIdCourse($course);
+		foreach ($students as $student) {
+			$mark = new Mark();
+			$mark->setIdCourse($course);
+			$mark->setIdPartial($partial);
+			$mark->setIdStudent($student);
+			$em->persist($mark);
+		}
+		$em->flush();		
 	}
 	
 	public function findPartialsByCourse($idCourse){
